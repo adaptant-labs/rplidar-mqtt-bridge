@@ -1,8 +1,13 @@
 FROM python:3.8-alpine
 
+ARG MQTT_BROKER_HOST
+ARG MQTT_BROKER_PORT
+ARG MQTT_TOPIX_PREFIX
+ARG RPLIDAR_DEVICE
+
 COPY . /app
 WORKDIR /app
 
 RUN pip install .
 
-CMD ["rplidar_mqtt_bridge"]
+ENTRYPOINT [ "rplidar_mqtt_bridge" ]

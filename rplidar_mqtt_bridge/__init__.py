@@ -10,8 +10,8 @@ parser.read(paths)
 
 config = parser['DEFAULT']
 
-MQTT_BROKER_HOST = config.get("MQTT_BROKER_HOST", "localhost")
-MQTT_BROKER_PORT = config.get("MQTT_BROKER_PORT", "1883")
-MQTT_TOPIC_PREFIX = config.get("MQTT_TOPIC_PREFIX", "rplidar")
+MQTT_BROKER_HOST = os.getenv("MQTT_BROKER_HOST", config.get("MQTT_BROKER_HOST", "localhost"))
+MQTT_BROKER_PORT = os.getenv("MQTT_BROKER_PORT", config.get("MQTT_BROKER_PORT", "1883"))
+MQTT_TOPIC_PREFIX = os.getenv("MQTT_TOPIC_PREFIX", config.get("MQTT_TOPIC_PREFIX", "rplidar"))
 
-RPLIDAR_DEVICE = config.get("RPLIDAR_DEVICE", "/dev/ttyUSB0")
+RPLIDAR_DEVICE = os.getenv("RPLIDAR_DEVICE", config.get("RPLIDAR_DEVICE", "/dev/ttyUSB0"))
